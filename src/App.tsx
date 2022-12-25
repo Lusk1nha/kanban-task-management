@@ -1,14 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { Fragment } from 'react'
+
+import { GlobalStyle } from './styles';
+import { ThemeContextProvider } from './contexts/components/ThemeContextProvider';
+
+import styled from 'styled-components';
+import { Navbar } from './pages/Navbar/index';
+
+const Container = styled.div`
+  background: ${props => props.theme.colors.bgColor};
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-
-    </div>
+    <Fragment>
+      <ThemeContextProvider>
+        <GlobalStyle />
+        
+        <Container>
+          <Navbar />
+          
+        </Container>
+      </ThemeContextProvider>
+    </Fragment>
   )
 }
 
