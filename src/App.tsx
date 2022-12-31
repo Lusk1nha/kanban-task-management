@@ -4,7 +4,7 @@ import { GlobalStyle } from './styles';
 import { ThemeContextProvider } from './contexts/components/ThemeContextProvider';
 
 import styled from 'styled-components';
-import { Navbar } from './pages/Navbar/index';
+import { Navbar, Content } from './pages';
 
 const Container = styled.div`
   background: ${props => props.theme.colors.bgColor};
@@ -24,7 +24,7 @@ function App() {
         
         <Container>
           <Navbar />
-          
+          <Content />
         </Container>
       </ThemeContextProvider>
     </Fragment>

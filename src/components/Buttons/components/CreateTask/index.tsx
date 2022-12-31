@@ -1,8 +1,8 @@
 import { ButtonProps } from "../../models/ButtonProps";
-import { Container } from "./style";
+import { Button } from "./style";
 
 export function CreateTask(props: ButtonProps) {
   return (
-    <Container {...props} />
+    <Button {...props} />
   )
 }

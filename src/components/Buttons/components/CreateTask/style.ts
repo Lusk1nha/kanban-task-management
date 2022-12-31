@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.button`
+export const Button = styled.button`
   background: ${props => props.theme.colors.buttonBGColor};
 
   max-width: 48px;
