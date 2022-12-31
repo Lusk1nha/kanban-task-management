@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
 
-    transition: 200ms linear background;
+    transition: 100ms all ease;
   }
 
   #root, body {

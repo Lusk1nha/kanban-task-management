@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.li`
   background: ${props => props.theme.colors.taskBGColor};
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -15,7 +16,7 @@ export const Container = styled.li`
 
   cursor: pointer;
 
-  transition: 200ms transform;
+  transition: 150ms transform linear;
 
   &:hover {
     transform: scale(1.05);
@@ -26,6 +27,12 @@ export const Title = styled.h3`
   color: ${props => props.theme.colors.taskTitleTextColor};
   font-size: 0.938rem;
   font-weight: bold;
+
+  transition: 150ms color linear;
+  
+  ${Container}:hover & {
+    color: ${props => props.theme.colors.taskTitleTextColorHover};
+  }
 `
 
 export const SubtasksInfo = styled.span`

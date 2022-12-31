@@ -1,10 +1,11 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 
 import { GlobalStyle } from './styles';
 import { ThemeContextProvider } from './contexts/components/ThemeContextProvider';
 
 import styled from 'styled-components';
 import { Navbar, Content } from './pages';
+import { SidebarContextProvider } from './contexts/components/SidebarContextProvider';
 
 const Container = styled.div`
   background: ${props => props.theme.colors.bgColor};
@@ -15,17 +16,25 @@ const Container = styled.div`
   flex-grow: 1;
 `
 
-function App() {
+export const Wrapper = styled.div`
+  width: 100%;
 
+  display: flex;
+  flex-grow: 1;
+`
+
+function App() {
   return (
     <Fragment>
       <ThemeContextProvider>
-        <GlobalStyle />
-        
-        <Container>
-          <Navbar />
-          <Content />
-        </Container>
+        <SidebarContextProvider>
+          <GlobalStyle />
+
+          <Container>
+            <Navbar />
+            <Content />
+          </Container>
+        </SidebarContextProvider>
       </ThemeContextProvider>
     </Fragment>
   )

@@ -1,32 +1,38 @@
 import { CreateTask, Options } from '../../components/Buttons/components';
 import { ChevronDown } from '../../components/Icons/components/ChevronDown';
-import { Container, IconContainer, Icon, TaskContainer, TaskTitle, ChevronContainer, Buttons } from './style';
+import { Container, LogoContainer, LogoTitle, IconContainer, Icon, Content, TaskContainer, TaskTitle, ChevronContainer, Buttons } from './style';
 
 
 export function Navbar() {
 
   return (
     <Container>
-      <IconContainer title="Enterprise logo">
-        <Icon />
-        <Icon />
-        <Icon />
-      </IconContainer>
+      <LogoContainer>
+        <IconContainer title="Enterprise logo">
+          <Icon />
+          <Icon />
+          <Icon />
+        </IconContainer>
+        
+        <LogoTitle>Kanban</LogoTitle>
+      </LogoContainer>
 
-      <TaskContainer>
-        <TaskTitle title="Board: Platform Launch" aria-label="Platform Launch">
-          Platform Launch
-        </TaskTitle>
+      <Content>
+        <TaskContainer>
+          <TaskTitle title="Board: Platform Launch" aria-label="Platform Launch">
+            Platform Launch
+          </TaskTitle>
 
-        <ChevronContainer>
-          <ChevronDown iconColor="transparent" />
-        </ChevronContainer>
-      </TaskContainer>
+          <ChevronContainer>
+            <ChevronDown iconColor="transparent" />
+          </ChevronContainer>
+        </TaskContainer>
 
-      <Buttons>
-        <CreateTask type="button" disabled>+</CreateTask>
-        <Options />
-      </Buttons>
+        <Buttons>
+          <CreateTask type="button" disabled>+</CreateTask>
+          <Options />
+        </Buttons>
+      </Content>
     </Container>
   )
 }

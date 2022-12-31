@@ -8,8 +8,34 @@ export const Container = styled.nav`
 
   display: flex;
   align-items: center;
+`
 
-  padding: 1rem 1rem;
+export const LogoContainer = styled.div`
+
+  height: 100%;
+  display: flex;
+  align-items: center;
+  
+  padding: 0 0 0 1rem;
+
+  @media screen and (min-width: 700px) {
+    width: 100%;
+    max-width: 16.25rem;
+    border-right: 1px solid ${props => props.theme.colors.sidebarBorderColor};
+
+    padding: 0 1rem;
+  }
+`
+
+export const LogoTitle = styled.h2`
+  color: ${props => props.theme.colors.navLogoTitleTextColor};
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: none;
+
+  @media screen and (min-width: 700px) {
+    display: block;
+  }
 `
 
 export const IconContainer = styled.section`
@@ -22,7 +48,10 @@ export const IconContainer = styled.section`
 
   column-gap: 0.25rem;
 
-  margin-right: 1rem;
+  
+  @media screen and (min-width: 700px) {
+    margin-right: 1rem;
+  }
 `
 
 export const Icon = styled.div`
@@ -45,6 +74,15 @@ export const Icon = styled.div`
   &:nth-child(3) {
     background: ${props => props.theme.colors.navIconTileThree};
   }
+`
+
+export const Content = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  padding: 1rem;
 `
 
 export const TaskContainer = styled.section`

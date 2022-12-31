@@ -5,7 +5,8 @@ interface CircleProps {
 }
 
 export const Container = styled.div`
-  width: 280px;
+  min-width: 17.5rem;
+  width: 17.5rem;
 
   display: flex;
   flex-direction: column;

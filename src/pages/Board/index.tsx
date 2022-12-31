@@ -1,7 +1,8 @@
 import { NoColumn } from "../NoColumn";
 import { Container } from "./style";
 import { useState } from 'react';
-import { AllColumns } from './../AllColumns/index';
+
+import { ColumnsRender } from '../ColumnsRender';
 
 export function Board() {
   const [columns, setColumns] = useState([
@@ -305,7 +306,7 @@ export function Board() {
       {
         columns?.length == 0
           ? <NoColumn />
-          : <AllColumns columns={columns} />
+          : <ColumnsRender columns={columns} />
       }
     </Container>
   )

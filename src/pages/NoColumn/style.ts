@@ -36,4 +36,10 @@ export const AddColumnButton = styled.button.attrs(() => ({
   border-radius: 1.5rem;
 
   cursor: pointer;
+
+  transition: 150ms background linear;
+
+  &:hover {
+    background: ${props => props.theme.colors.noColumnButtonBGColorHover};
+  }
 `

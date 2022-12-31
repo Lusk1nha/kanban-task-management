@@ -10,9 +10,9 @@ interface TaskProps {
 export function Task({ title, description, status, subtasks }: TaskProps) {
 
   return (
-    <Container>
+    <Container title={title} aria-label={title} draggable>
       <Title>{title}</Title>
-      <SubtasksInfo>
+      <SubtasksInfo title={`0 of ${subtasks?.length} subtasks`}>
         {`0 of ${subtasks?.length} subtasks`}
       </SubtasksInfo>
     </Container>

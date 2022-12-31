@@ -1,5 +1,6 @@
 import { createContext, useCallback, useEffect, useState } from "react";
-import { ThemeContextProps, ThemeContextProviderProps } from "../../models";
+import { ThemeContextProps } from "./ThemeContextProps";
+import { ThemeContextProviderProps } from "./ThemeContextProviderProps";
 
 import { base, light, dark } from '../../../styles';
 import { ThemeProvider } from 'styled-components';
@@ -7,7 +8,7 @@ import { ThemeProvider } from 'styled-components';
 const themeLocalStorage = localStorage.getItem('theme');
 const defaultTheme = themeLocalStorage ?? 'light';
 
-export const ThemeContext = createContext<ThemeContextProps | null>(null);
+export const ThemeContext = createContext<ThemeContextProps>(({ theme: defaultTheme, onThemeChange: () => { } }));
 
 const themesMap: any = {
   light,
@@ -22,10 +23,9 @@ export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
     localStorage.setItem('theme', theme)
   }, [theme])
 
-  const onThemeChange = useCallback((value?: string) => {
+  const onThemeChange = useCallback(() => {
     setTheme(
-      value ??
-        theme === 'light'
+      theme === 'light'
         ? 'dark'
         : 'light'
     )
