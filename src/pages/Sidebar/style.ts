@@ -20,6 +20,8 @@ export const Container = styled.aside`
 
   padding: 1rem 0 1rem 0;
 
+  z-index: 10;
+
   @media screen and (min-width: 700px) {
     display: flex;
     align-items: center;
@@ -198,6 +200,7 @@ export const HideSideBarButton = styled.button`
   border-bottom-right-radius: 6.25rem;
 
   margin-right: 1.25rem;
+  margin-bottom: 2rem;
   padding-left: 1.5rem;
 
   cursor: pointer;

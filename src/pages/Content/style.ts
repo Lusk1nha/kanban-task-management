@@ -14,6 +14,7 @@ export const Container = styled.section`
 
 export const WrapperWithRelative = styled.main`
   width: 100%;
+  height: 100%;
   position: relative;
 
   display: flex;
@@ -49,9 +50,13 @@ export const OpenSideBarButton = styled.button<OpenSidebarButtonProps>`
     background: ${props => props.theme.colors.sidebarOpenButtonBGColorHover};
   }
 
-  ${({ active }) => active && `
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  `}
+  @media screen and (min-width: 700px) {
+    display: none;
+
+    ${({ active }) => active && `
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    `}
+  }
 `

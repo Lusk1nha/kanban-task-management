@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.section`
   width: 100%;
+  height: 100%;
 
   display: flex;
   align-items: flex-start;
@@ -10,9 +11,10 @@ export const Container = styled.section`
   padding: 1.5rem 1rem;
   column-gap: 1.5rem;
 
+  overflow: auto;
 
   @media screen and (min-width: 700px) {
-    padding: 1.5rem 1.5rem 1.5rem 3rem;
+    padding: 1.5rem 2rem 2.5rem 1.5rem;
   }
 `
 

@@ -282,21 +282,6 @@ export function Board() {
             }
           ]
         },
-                {
-          "title": "Research the market",
-          "description": "We need to get a solid overview of the market to ensure we have up-to-date estimates of market size and demand.",
-          "status": "Done",
-          "subtasks": [
-            {
-              "title": "Write up research analysis",
-              "isCompleted": true
-            },
-            {
-              "title": "Calculate TAM",
-              "isCompleted": true
-            }
-          ]
-        }
       ]
     }
   ])

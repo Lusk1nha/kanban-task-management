@@ -8,6 +8,8 @@ export const Container = styled.nav`
 
   display: flex;
   align-items: center;
+
+  z-index: 10;
 `
 
 export const LogoContainer = styled.div`
