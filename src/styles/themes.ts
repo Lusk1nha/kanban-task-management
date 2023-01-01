@@ -43,7 +43,7 @@ export const light = {
   "taskStatusColor1": "#49C4E5",
   "taskStatusColor2": "#8471F2",
   "taskStatusColor3": "#67E2AE",
-  "createButtonPanelBGColor": "#E9EFFA",
+  "createButtonPanelBGColor": "linear-gradient(180deg, #E9EFFA 0%, rgba(233, 239, 250, 0.5) 100%)",
   "createButtonPanelTextColor": "#828FA3",
   "createButtonPanelTextColorHover": "#635FC7"
 }
@@ -85,7 +85,7 @@ export const dark = {
   "taskStatusColor1": "#49C4E5",
   "taskStatusColor2": "#8471F2",
   "taskStatusColor3": "#67E2AE",
-  "createButtonPanelBGColor": "#2B2C37",
+  "createButtonPanelBGColor": "linear-gradient(180deg, rgba(43, 44, 55, 0.25) 0%, rgba(43, 44, 55, 0.125) 100%)",
   "createButtonPanelTextColor": "#828FA3",
   "createButtonPanelTextColorHover": "#635FC7"
 }

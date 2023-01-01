@@ -1,11 +1,10 @@
-import { Fragment, useState } from 'react'
-
-import { GlobalStyle } from './styles';
-import { ThemeContextProvider } from './contexts/components/ThemeContextProvider';
+import { Fragment } from 'react'
 
 import styled from 'styled-components';
 import { Navbar, Content } from './pages';
-import { SidebarContextProvider } from './contexts/components/SidebarContextProvider';
+import { useState } from 'react';
+import { IBoard } from './shared/models/IBoard';
+import { CurrentBoardContextProvider } from './contexts/components/CurrentBoardContextProvider';
 
 const Container = styled.div`
   background: ${props => props.theme.colors.bgColor};
@@ -23,19 +22,20 @@ export const Wrapper = styled.div`
   flex-grow: 1;
 `
 
+const currentBoardLocalStorage = localStorage.getItem('currentBoard')
+const currentBoardCached = currentBoardLocalStorage != null ? JSON.parse(currentBoardLocalStorage) : null
+
 function App() {
+  const [currentBoard, setCurrentBoard] = useState<IBoard | null>(currentBoardCached);
+
   return (
     <Fragment>
-      <ThemeContextProvider>
-        <SidebarContextProvider>
-          <GlobalStyle />
-
-          <Container>
-            <Navbar />
-            <Content />
-          </Container>
-        </SidebarContextProvider>
-      </ThemeContextProvider>
+      <CurrentBoardContextProvider board={currentBoard} setBoard={setCurrentBoard}>
+        <Container>
+          <Navbar />
+          <Content />
+        </Container>
+      </CurrentBoardContextProvider>
     </Fragment>
   )
 }

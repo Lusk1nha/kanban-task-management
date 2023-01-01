@@ -1,8 +1,5 @@
 import styled from 'styled-components'
 
-type BoardItemProps = {
-  active?: boolean;
-}
 
 type DropdownProps = {
   active?: boolean;
@@ -10,8 +7,7 @@ type DropdownProps = {
 
 export const Container = styled.aside`
   background: ${props => props.theme.colors.navColor};
-  max-width: 16.25rem;
-  width: 100%;
+  min-width: 16.25rem;
   height: 100%;
 
   display: none;
@@ -35,81 +31,11 @@ export const BoardCountText = styled.h5`
 
   color: ${props => props.theme.colors.sidebarBoardCountTextColor};
   font-size: 0.75rem;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 0.15rem;
 
   padding-left: 1rem;
   margin-bottom: 1.188rem;
-`
-
-export const RenderBoard = styled.ul`
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-
-  padding-right: 1.25rem;
-`
-
-export const BoardItem = styled.li<BoardItemProps>`
-  width: 100%;
-  height: 3rem;
-
-  display: flex;
-  align-items: center;
-
-  column-gap: 0.75rem;
-  
-  color: ${props => props.theme.colors.sidebarBoardItemTextColor};
-  font-size: 0.938rem;
-  font-weight: bold;
-
-  padding: 1rem 1.5rem 1rem 1rem;
-
-  border-top-right-radius: 6.25rem;
-  border-bottom-right-radius: 6.25rem;
-
-  transition: all 300ms ease;
-
-  cursor: pointer;
-
-  &:hover {
-    background: ${props => props.theme.colors.sidebarBoardItemBGColorHover};
-    color: ${props => props.theme.colors.sidebarBoardItemTextColorHover};
-  }
-
-  ${({ theme, active }) => active && `
-    background:  ${theme.colors.sidebarBoardItemBGColor};
-    color: ${theme.colors.sidebarBoardItemActiveTextColor};
-
-    cursor: default;
-
-    &:hover {
-      background:  ${theme.colors.sidebarBoardItemBGColor};
-      color: ${theme.colors.sidebarBoardItemActiveTextColor};
-    }
-  `}
-`
-
-export const CreateBoardButton = styled.button`
-  background: transparent;
-  width: 100%;
-  height: 3rem;
-
-  display: flex;
-  align-items: center;
-
-  color: ${props => props.theme.colors.sidebarCreateBoardButtonTextColor};
-  font-size: 0.938rem;
-  font-weight: bold;
-
-  border: none;
-  outline: none;
-
-  padding: 1rem 1.5rem 1rem 1rem;
-
-  cursor: pointer;
 `
 
 export const ThemeContainer = styled.div`
@@ -140,7 +66,6 @@ export const Dropdown = styled.button<DropdownProps>`
   position: relative;
 
   border-radius: 0.75rem;
-  overflow: hidden;
 
   outline: none;
   border: none;
@@ -186,7 +111,7 @@ export const HideSideBarButton = styled.button`
 
   color: ${props => props.theme.colors.sidebarHideButtonTextColor};
   font-size: 0.938rem;
-  font-weight: bold;
+  font-weight: 700;
 
   display: flex;
   align-items: center;
@@ -211,4 +136,33 @@ export const HideSideBarButton = styled.button`
     background: ${props => props.theme.colors.sidebarBoardItemBGColorHover};
     color: ${props => props.theme.colors.sidebarBoardItemTextColorHover};
   }
+`
+export const BoardsContainer = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  padding-right: 1.25rem;
+`
+
+export const CreateBoardButton = styled.button`
+  background: transparent;
+  width: 100%;
+  height: 3rem;
+
+  display: flex;
+  align-items: center;
+
+  color: ${props => props.theme.colors.sidebarCreateBoardButtonTextColor};
+  font-size: 0.938rem;
+  font-weight: 700;
+
+  border: none;
+  outline: none;
+
+  padding: 1rem 1.5rem 1rem 1rem;
+
+  cursor: pointer;
 `

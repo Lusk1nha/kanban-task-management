@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+type LogoContainerProps = {
+  active?: boolean;
+}
+
 export const Container = styled.nav`
   background: ${props => props.theme.colors.navColor};
 
@@ -12,7 +16,7 @@ export const Container = styled.nav`
   z-index: 10;
 `
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.div<LogoContainerProps>`
 
   height: 100%;
   display: flex;
@@ -21,11 +25,16 @@ export const LogoContainer = styled.div`
   padding: 0 0 0 1rem;
 
   @media screen and (min-width: 700px) {
+    max-width: 12.563rem;
     width: 100%;
-    max-width: 16.25rem;
+
     border-right: 1px solid ${props => props.theme.colors.sidebarBorderColor};
 
     padding: 0 1rem;
+
+    ${(({ active }) => active && `
+      max-width: 16.25rem;
+    `)}
   }
 `
 
@@ -101,10 +110,19 @@ export const TaskContainer = styled.section`
 export const TaskTitle = styled.h3`
   color: ${props => props.theme.colors.taskTitleColor};
   font-size: 1.125rem;
-  font-weight: 800;
+  font-weight: 700;
+  line-height: 1.438rem;
 
   margin-right: 0.5rem;
-`
+
+  @media screen and (min-width: 700px) {
+    font-size: 1.25rem;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 1.5rem;
+  }
+ `
 
 export const ChevronContainer = styled.div`
   width: 15px;
@@ -113,6 +131,10 @@ export const ChevronContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (min-width: 700px) {
+    display: none;
+  }
 `
 
 export const Buttons = styled.section`

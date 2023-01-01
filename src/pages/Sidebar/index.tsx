@@ -1,26 +1,26 @@
-import { Container, BoardCountText, RenderBoard, BoardItem, CreateBoardButton, ThemeContainer, HideSideBarButton, Dropdown } from "./style";
+import { Container, BoardCountText, ThemeContainer, HideSideBarButton, Dropdown, BoardsContainer, CreateBoardButton } from "./style";
 import { useContext } from 'react';
 import { SidebarContext } from './../../contexts/components/SidebarContextProvider/index';
 import { SunIcon, MoonIcon } from "../../components/Icons/components";
 import { ThemeContext } from './../../contexts/components/ThemeContextProvider/index';
+import { BoardsContext } from './../../contexts/components/BoardsContextProvider/index';
+import { BoardsRender } from "../BoardsRender";
 
 export function Sidebar() {
   const { onChange } = useContext(SidebarContext)
   const { theme, onThemeChange } = useContext(ThemeContext)
+  const { boards } = useContext(BoardsContext)
 
   return (
     <Container>
-      <BoardCountText>ALL BOARDS (3)</BoardCountText>
+      <BoardCountText>ALL BOARDS ({boards?.length})</BoardCountText>
 
-      <RenderBoard>
-        <BoardItem active>Platform Launch</BoardItem>
-        <BoardItem>Marketing Plan</BoardItem>
-        <BoardItem>Roadmap</BoardItem>
-
+      <BoardsContainer>
+        <BoardsRender boards={boards} />
         <CreateBoardButton title="Create new board" aria-label="Create a new board">
           + Create New Board
         </CreateBoardButton>
-      </RenderBoard>
+      </BoardsContainer>
 
       <ThemeContainer>
         <SunIcon />

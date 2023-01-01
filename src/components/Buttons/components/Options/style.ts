@@ -31,8 +31,8 @@ export const Container = styled.button`
 
 export const Dot = styled.div`
   background: ${props => props.theme.colors.buttonDotColor};
-  width: 4px;
-  height: 4px;
+  width: 0.231rem;
+  height: 0.231rem;
 
   border-radius: 50%;
 `

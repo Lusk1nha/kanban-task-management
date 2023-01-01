@@ -26,7 +26,5 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
 
     display: flex;
-
-    overflow: hidden;
   }
 `

@@ -37,5 +37,6 @@ export const Name = styled.h3`
   font-size: 0.75rem;
   font-weight: bold;
   letter-spacing: 0.15rem;
+  line-height: 0.945rem;
 `
 

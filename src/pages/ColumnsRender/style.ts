@@ -14,7 +14,7 @@ export const Container = styled.section`
   overflow: auto;
 
   @media screen and (min-width: 700px) {
-    padding: 1.5rem 2rem 2.5rem 1.5rem;
+    padding: 1.5rem 1rem 1.5rem 1.5rem;
   }
 `
 

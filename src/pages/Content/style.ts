@@ -4,7 +4,7 @@ type OpenSidebarButtonProps = {
   active?: boolean;
 }
 
-export const Container = styled.section`
+export const Container = styled.main`
   width: 100%;
   height: 100%;
 
@@ -12,7 +12,7 @@ export const Container = styled.section`
   flex-grow: 1;
 `
 
-export const WrapperWithRelative = styled.main`
+export const WrapperWithRelative = styled.section`
   width: 100%;
   height: 100%;
   position: relative;
