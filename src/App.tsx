@@ -5,6 +5,9 @@ import { Navbar, Content } from './pages';
 import { useState } from 'react';
 import { IBoard } from './shared/models/IBoard';
 import { CurrentBoardContextProvider } from './contexts/components/CurrentBoardContextProvider';
+import { Modal } from './components/Modal';
+import { Sidebar } from './pages/Sidebar';
+import { TaskView } from './pages/Task/components/TaskView';
 
 const Container = styled.div`
   background: ${props => props.theme.colors.bgColor};
@@ -27,6 +30,7 @@ const currentBoardCached = currentBoardLocalStorage != null ? JSON.parse(current
 
 function App() {
   const [currentBoard, setCurrentBoard] = useState<IBoard | null>(currentBoardCached);
+  const [currentModalContent, setCurrentModalContent] = useState<React.ReactNode>(<Sidebar />);
 
   return (
     <Fragment>
@@ -35,6 +39,10 @@ function App() {
           <Navbar />
           <Content />
         </Container>
+        
+        <Modal>
+          <TaskView />
+        </Modal>
       </CurrentBoardContextProvider>
     </Fragment>
   )

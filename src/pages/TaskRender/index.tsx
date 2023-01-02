@@ -1,8 +1,10 @@
+import { ITask } from "../../shared/models/ITask";
+
 import { Task } from "../Task";
 import { Container } from "./style";
 
 interface TaskRenderProps {
-  tasks: any[]
+  tasks: ITask[]
 }
 
 export function TaskRender({ tasks }: TaskRenderProps) {
@@ -10,9 +12,7 @@ export function TaskRender({ tasks }: TaskRenderProps) {
   return (
     <Container>
       {tasks.map((task, id) => {
-        return (
-          <Task key={id} {...task} />
-        )
+        return <Task key={id} {...task} />
       })}
     </Container>
   )

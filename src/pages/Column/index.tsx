@@ -1,5 +1,5 @@
 import { Container, Details, Circle, Name } from "./style";
-import { TaskRender } from './components/TaskRender/index';
+import { TaskRender } from '../TaskRender/index';
 
 interface ColumnProps {
   index: number;
