@@ -4,7 +4,12 @@ import { ChevronDown } from '../../components/Icons/components/ChevronDown';
 import { SidebarContext } from '../../contexts/components/SidebarContextProvider';
 import { Container, LogoContainer, LogoTitle, IconContainer, Icon, Content, TaskContainer, TaskTitle, ChevronContainer, Buttons } from './style';
 import { CurrentBoardContext } from '../../contexts/components/CurrentBoardContextProvider';
+import { IButton } from '../../shared/models/IButton';
 
+const buttonsOptions = [
+  { text: 'Edit Board', title: 'Edit Board', "aria-label": 'Edit Board', type: 'button' },
+  { text: 'Delete Board', variant: 'delete', title: 'Delete Board', "aria-label": 'Delete Board', type: 'button' },
+] as IButton[]
 
 export function Navbar() {
   const currentBoard = useContext(CurrentBoardContext)
@@ -18,7 +23,7 @@ export function Navbar() {
           <Icon />
           <Icon />
         </IconContainer>
-        
+
         <LogoTitle title="Kanban" aria-label="Kanban">Kanban</LogoTitle>
       </LogoContainer>
 
@@ -35,7 +40,13 @@ export function Navbar() {
 
         <Buttons>
           <CreateTask type="button" disabled={currentBoard.board?.columns?.length === 0}>+</CreateTask>
-          <Options type="button" title="App options" aria-label="App options" />
+          <Options
+            align="left"
+            type="button"
+            title="App options"
+            aria-label="App options"
+            buttons={buttonsOptions}
+          />
         </Buttons>
       </Content>
     </Container>

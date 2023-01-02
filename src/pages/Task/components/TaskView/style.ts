@@ -12,7 +12,7 @@ export const Container = styled.section`
   opacity: 1;
 
   row-gap: 1.5rem;
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 2rem;
 
   border-radius: 0.375rem;
 

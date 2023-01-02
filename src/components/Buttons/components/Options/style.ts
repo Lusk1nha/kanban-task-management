@@ -1,6 +1,18 @@
 import styled from "styled-components";
 
-export const Container = styled.button`
+type ButtonProps = {
+  variant?: 'normal' | 'delete'
+}
+
+type ContentProps = {
+  align: 'left' | 'center' | 'right'
+}
+
+export const Container = styled.div`
+  position: relative;
+`
+
+export const Button = styled.button`
   background: transparent;
 
   width: auto;
@@ -35,4 +47,72 @@ export const Dot = styled.div`
   height: 0.231rem;
 
   border-radius: 50%;
+`
+
+export const OptionsContent = styled.div<ContentProps>`
+  background: ${props => props.theme.colors.optionsContentBGColor};
+  width: 12rem;
+  position: absolute;
+  top: 200%;
+
+  display: flex;
+  flex-direction: column;
+
+  row-gap: 1rem;
+
+  transform: translateX(-45%);
+
+  padding: 1rem;
+
+  border-radius: 0.5rem;
+
+  z-index: 500;
+
+  ${(({ align }) => {
+    if(align == 'left') {
+      return `
+        transform: translateX(-90%);
+      `
+    }
+  })}
+`
+
+export const OptionButton = styled.button<ButtonProps>`
+  background: none;
+  width: 100%;
+
+  display: flex;
+
+  color: #828FA3;
+  font-size: 0.813rem;
+  font-weight: 500;
+  line-height: 1.438rem;
+  text-align: center;
+
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  &:hover {
+    color: ${props => props.theme.colors.subtaskViewCardTextColor};
+  }
+
+  &:disabled {
+    opacity: 50%;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  ${(({ variant }) => {
+    if (variant != null) {
+      if (variant === 'delete') {
+        return `
+            color: #EA5555;
+          `
+      }
+    }
+  })}
 `

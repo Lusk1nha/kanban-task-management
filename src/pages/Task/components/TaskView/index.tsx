@@ -1,5 +1,6 @@
 import { Options } from '../../../../components/Buttons/components';
 import { Dropdown } from '../../../../components/Dropdown';
+import { IButton } from '../../../../shared/models/IButton';
 import { IOption } from '../../../../shared/models/IOption';
 import { SubtaskRender } from '../../../SubtaskRender';
 import { Container, Header, Title, Main, Description, SectionName, Wrapper, Footer } from './style';
@@ -19,12 +20,17 @@ const StatusOptions = [
   },
 ] as IOption[]
 
+const ButtonsOptions = [
+  { text: 'Edit Task', title: 'Edit Task', "aria-label": 'Edit Task', type: 'button' },
+  { text: 'Delete Task', variant: 'delete', title: 'Delete Task', "aria-label": 'Delete Task', type: 'button' },
+] as IButton[]
+
 export function TaskView() {
   return (
     <Container>
       <Header>
         <Title>Research pricing points of various competitors and trial different business models </Title>
-        <Options />
+        <Options buttons={ButtonsOptions} />
       </Header>
 
       <Main>
@@ -39,7 +45,7 @@ export function TaskView() {
               "title": "Research competitor pricing and business models",
               "isCompleted": true
             },
-            { 
+            {
               "title": "Outline a business model that works for our solution",
               "isCompleted": true
             },
