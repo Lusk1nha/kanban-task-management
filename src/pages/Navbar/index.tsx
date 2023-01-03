@@ -5,6 +5,9 @@ import { SidebarContext } from '../../contexts/components/SidebarContextProvider
 import { Container, LogoContainer, LogoTitle, IconContainer, Icon, Content, TaskContainer, TaskTitle, ChevronContainer, Buttons } from './style';
 import { CurrentBoardContext } from '../../contexts/components/CurrentBoardContextProvider';
 import { IButton } from '../../shared/models/IButton';
+import { ModalContext } from '../../contexts/components/ModalProvider';
+
+import { TaskCreate } from '../Task/components/TaskCreate';
 
 const buttonsOptions = [
   { text: 'Edit Board', title: 'Edit Board', "aria-label": 'Edit Board', type: 'button' },
@@ -13,7 +16,14 @@ const buttonsOptions = [
 
 export function Navbar() {
   const currentBoard = useContext(CurrentBoardContext)
+  const modalContext = useContext(ModalContext);
+
   const { on } = useContext(SidebarContext)
+
+  const handleAddClick = () => {
+    modalContext?.setOpened(true);
+    modalContext?.setContent(<TaskCreate />);
+  }
 
   return (
     <Container>
@@ -39,7 +49,8 @@ export function Navbar() {
         </TaskContainer>
 
         <Buttons>
-          <CreateTask type="button" disabled={currentBoard.board?.columns?.length === 0}>+</CreateTask>
+          <CreateTask type="button" disabled={currentBoard.board?.columns?.length === 0} onClick={handleAddClick}>+</CreateTask>
+
           <Options
             align="left"
             type="button"

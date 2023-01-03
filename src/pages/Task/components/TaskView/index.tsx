@@ -5,7 +5,9 @@ import { IOption } from '../../../../shared/models/IOption';
 import { ISubtask } from '../../../../shared/models/ISubtask';
 import { SubtaskRender } from '../../../SubtaskRender';
 import { Container, Header, Title, Main, Description, SectionName, Wrapper, Footer } from './style';
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState, useContext } from 'react';
+import { CurrentBoardContext } from './../../../../contexts/components/CurrentBoardContextProvider/index';
+import { IColumn } from './../../../../shared/models/IColumn';
 
 const StatusOptions = [
   {
@@ -38,6 +40,9 @@ export function TaskView({ title, description, status, subtasks }: TaskProps) {
   const [statusDropdownOpen, setStatusDropdownOpen] = useState<boolean>(false)
   const [selectedStatus, setSelectedStatus] = useState<IOption | null>()
 
+  const currentBoard = useContext(CurrentBoardContext)
+  const boardColumns = currentBoard?.board?.columns ?? []
+
   const subtasksLength = subtasks?.length
 
   const completedSubtasks = subtasks.filter(subtask => subtask.isCompleted)
@@ -63,8 +68,24 @@ export function TaskView({ title, description, status, subtasks }: TaskProps) {
     setStatusDropdownOpen(!statusDropdownOpen)
   }
 
+  const handleClickInContent = (event: any) => {
+    event.stopPropagation()
+  }
+  
+  const getAllColumns = (columns: IColumn[]): IOption[] => {
+    return columns.map((column, id) => {
+      return {
+        id: id,
+        text: column.name,
+        value: column.name,
+      } as IOption
+    })
+  }
+
+  console.log(status, currentStatusInOption)
+
   return (
-    <Container>
+    <Container onClick={handleClickInContent}>
       <Header>
         <Title>{title}</Title>
         <Options buttons={ButtonsOptions} />
@@ -86,7 +107,7 @@ export function TaskView({ title, description, status, subtasks }: TaskProps) {
           selectedOption={selectedStatus ?? currentStatusInOption}
           onChange={onChangeStatus}
           onOpen={onClickInDropdown}
-          options={StatusOptions}
+          options={getAllColumns(boardColumns)}
         />
       </Footer>
     </Container>

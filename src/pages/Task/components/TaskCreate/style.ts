@@ -12,7 +12,7 @@ export const Container = styled.section`
   opacity: 1;
 
   row-gap: 1.5rem;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
 
   border-radius: 0.375rem;
 
@@ -20,6 +20,7 @@ export const Container = styled.section`
     max-width: 30rem;
   }
 `
+
 export const Header = styled.article`
   width: 100%;
 
@@ -37,43 +38,13 @@ export const Title = styled.h2`
   padding-right: 2rem;
 `
 
-export const Main = styled.article`
+export const Form = styled.form`
   width: 100%;
 
   display: flex;
   flex-direction: column;
+
+  flex-grow: 1;
 
   row-gap: 1.5rem;
-`
-
-export const Description = styled.p`
-  color: ${props => props.theme.colors.taskViewCardDescriptionTextColor};
-  font-size: 0.813rem;
-  font-weight: 500;
-  line-height: 1.438rem;
-`
-
-export const Wrapper = styled.div`
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-
-  row-gap: 1rem;
-`
-
-export const SectionName = styled.h5`
-  color: ${props => props.theme.colors.subtaskViewCardTitleTextColor};
-  font-size: 0.75rem;
-  font-weight: 700;
-  line-height: 0.945rem;
-`
-
-export const Footer = styled.article`
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-
-  row-gap: 0.5rem;
 `

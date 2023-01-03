@@ -40,10 +40,3 @@ export const Wrapper = styled.div`
 
   padding: 1rem 1.5rem;
 `
-
-export const Content = styled.div`
-  width: auto;
-  height: auto;
-
-  display: flex;
-`

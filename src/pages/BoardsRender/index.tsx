@@ -19,7 +19,7 @@ export function BoardsRender({ boards }: IBoardsRenderProps) {
         boards.map((board, id) => {
           return (
             <Item
-              key={id}
+              key={board.name + id}
               title={board.name}
               aria-label={board.name}
               onClick={() => onItemClick(board)}

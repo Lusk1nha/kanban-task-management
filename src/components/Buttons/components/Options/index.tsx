@@ -20,7 +20,7 @@ export function Options({ buttons, align, ...rest }: OptionsProps) {
         ? (
           <OptionsContent align={align ?? 'center'}>
             {buttons?.map(({ text, ...rest }, id) => {
-              return <OptionButton key={id} {...rest}>{text}</OptionButton>
+              return <OptionButton key={text + id} {...rest}>{text}</OptionButton>
             })}
           </OptionsContent>
         )

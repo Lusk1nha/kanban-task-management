@@ -8,11 +8,10 @@ interface TaskRenderProps {
 }
 
 export function TaskRender({ tasks }: TaskRenderProps) {
-
   return (
     <Container>
       {tasks.map((task, id) => {
-        return <Task key={id} {...task} />
+        return <Task key={task.title + task.status + id} {...task} />
       })}
     </Container>
   )

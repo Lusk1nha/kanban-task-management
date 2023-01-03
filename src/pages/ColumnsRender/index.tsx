@@ -10,7 +10,7 @@ export function ColumnsRender({ columns }: ColumnsRenderProps) {
     <Container>
       {columns?.map((column, id) => {
         return (
-          <Column key={id} index={id} {...column} />
+          <Column key={column.name + id} index={id} {...column} />
         )
       })}
       <CreateColumnContainer>

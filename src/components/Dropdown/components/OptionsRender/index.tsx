@@ -9,7 +9,7 @@ export function OptionsRender({ options, onChange }: IOptionsRenderProps) {
       {
         options?.map((option, id) => {
           return (
-            <Option key={id} onChange={onChange} {...option} />
+            <Option key={option.value + id} onChange={onChange} {...option} />
           )
         })
       }

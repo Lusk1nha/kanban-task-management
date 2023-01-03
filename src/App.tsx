@@ -25,21 +25,15 @@ export const Wrapper = styled.div`
   flex-grow: 1;
 `
 
-const currentBoardLocalStorage = localStorage.getItem('currentBoard')
-const currentBoardCached = currentBoardLocalStorage != null ? JSON.parse(currentBoardLocalStorage) : null
 
 function App() {
-  const [currentBoard, setCurrentBoard] = useState<IBoard | null>(currentBoardCached);
-  const [currentModalContent, setCurrentModalContent] = useState<React.ReactNode>(<Sidebar />);
 
   return (
     <Fragment>
-      <CurrentBoardContextProvider board={currentBoard} setBoard={setCurrentBoard}>
-        <Container>
-          <Navbar />
-          <Content />
-        </Container>
-      </CurrentBoardContextProvider>
+      <Container>
+        <Navbar />
+        <Content />
+      </Container>
     </Fragment>
   )
 }
