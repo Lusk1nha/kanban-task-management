@@ -39,10 +39,6 @@ function App() {
           <Navbar />
           <Content />
         </Container>
-        
-        <Modal>
-          <TaskView />
-        </Modal>
       </CurrentBoardContextProvider>
     </Fragment>
   )

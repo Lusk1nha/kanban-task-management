@@ -1,4 +1,5 @@
 import { BoardsContextProvider } from "../../contexts/components/BoardsContextProvider";
+import { ModalProvider } from "../../contexts/components/ModalProvider";
 import { SidebarContextProvider } from "../../contexts/components/SidebarContextProvider";
 import { ThemeContextProvider } from "../../contexts/components/ThemeContextProvider";
 import { GlobalStyle } from "../../styles";
@@ -10,7 +11,9 @@ export default function AppProviders({ children }: IAppProvidersProps) {
       <BoardsContextProvider>
         <SidebarContextProvider>
           <GlobalStyle />
-          {children}
+          <ModalProvider>
+            {children}
+          </ModalProvider>
         </SidebarContextProvider>
       </BoardsContextProvider>
     </ThemeContextProvider>

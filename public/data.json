@@ -366,7 +366,27 @@
         },
         {
           "name": "Doing",
-          "tasks": []
+          "tasks": [
+            {
+              "title": "Share on Show HN",
+              "description": "",
+              "status": "",
+              "subtasks": [
+                {
+                  "title": "Draft out HN post",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Get feedback and refine",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Publish post",
+                  "isCompleted": false
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Done",

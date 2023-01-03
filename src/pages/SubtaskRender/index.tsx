@@ -12,7 +12,7 @@ export function SubtaskRender({ subtasks }: SubTaskRenderProps) {
   return (
     <Container>
       {subtasks.map((subtask, id) => {
-        return <Subtask key={id} {...subtask} />
+        return <Subtask {...subtask} />
       })}
     </Container>
   )

@@ -96,6 +96,8 @@ export const OptionButton = styled.button<ButtonProps>`
 
   user-select: none;
 
+  transition: all 150ms linear;
+
   &:hover {
     color: ${props => props.theme.colors.subtaskViewCardTextColor};
   }

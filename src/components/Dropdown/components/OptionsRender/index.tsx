@@ -3,14 +3,13 @@ import { Container } from "./style";
 
 import { Option } from "../Option";
 
-export function OptionsRender({ options }: IOptionsRenderProps) {
-
+export function OptionsRender({ options, setSelected }: IOptionsRenderProps) {
   return (
     <Container>
       {
         options?.map((option, id) => {
           return (
-            <Option key={id} {...option} />
+            <Option key={id} setSelected={setSelected} {...option} />
           )
         })
       }

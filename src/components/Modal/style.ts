@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+type ContainerProps = {
+  active?: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   background: #00000080;
 
   width: 100%;
@@ -11,13 +15,17 @@ export const Container = styled.div`
   transform: translate(-50%, -50%);
   position: fixed;
 
-  display: flex;
+  display: none;
 
   mix-blend-mode: normal;
 
   z-index: 1000;
 
   transition: unset;
+
+  ${(({ active }) => active && `
+    display: flex;
+  `)}
 `
 
 export const Wrapper = styled.div`
@@ -33,3 +41,9 @@ export const Wrapper = styled.div`
   padding: 1rem 1.5rem;
 `
 
+export const Content = styled.div`
+  width: auto;
+  height: auto;
+
+  display: flex;
+`
