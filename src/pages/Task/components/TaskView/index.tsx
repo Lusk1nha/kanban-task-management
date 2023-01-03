@@ -14,8 +14,7 @@ const StatusOptions = [
   },
   {
     text: 'Doing',
-    value: 'Doing',
-    isDefaultValue: true
+    value: 'Doing'
   },
   {
     text: 'Done',
@@ -28,21 +27,6 @@ const ButtonsOptions = [
   { text: 'Delete Task', variant: 'delete', title: 'Delete Task', "aria-label": 'Delete Task', type: 'button' },
 ] as IButton[]
 
-const subtasksMockup = [
-  {
-    "title": "Research competitor pricing and business models",
-    "isCompleted": true
-  },
-  {
-    "title": "Outline a business model that works for our solution",
-    "isCompleted": true
-  },
-  {
-    "title": "Talk to potential customers about our proposed solution and ask for fair price expectancy",
-    "isCompleted": false
-  }
-]
-
 interface TaskProps {
   title: string;
   description: string | null;
@@ -51,10 +35,33 @@ interface TaskProps {
 }
 
 export function TaskView({ title, description, status, subtasks }: TaskProps) {
-  const [selectedStatus, setSelectedStatus] = useState<string>(status)
+  const [statusDropdownOpen, setStatusDropdownOpen] = useState<boolean>(false)
+  const [selectedStatus, setSelectedStatus] = useState<IOption | null>()
+
+  const subtasksLength = subtasks?.length
 
   const completedSubtasks = subtasks.filter(subtask => subtask.isCompleted)
-  const defaultStatus = StatusOptions.filter(option => option.value == status)[0]
+  const completedSubtasksLength = completedSubtasks?.length
+
+  const currentStatusInOption = {
+    text: status,
+    value: status
+  } as IOption
+
+  useEffect(() => {
+    return () => {
+      setStatusDropdownOpen(false)
+      setSelectedStatus(null)
+    }
+  }, [title, status])
+
+  const onChangeStatus = (option: IOption): void => {
+    setSelectedStatus(option)
+  }
+
+  const onClickInDropdown = () => {
+    setStatusDropdownOpen(!statusDropdownOpen)
+  }
 
   return (
     <Container>
@@ -64,19 +71,23 @@ export function TaskView({ title, description, status, subtasks }: TaskProps) {
       </Header>
 
       <Main>
-        <Description>
-          {description}
-        </Description>
+        <Description>{description}</Description>
 
         <Wrapper>
-          <SectionName>{`Subtasks (${completedSubtasks?.length} of ${subtasks?.length})`}</SectionName>
+          <SectionName>{`Subtasks (${completedSubtasksLength} of ${subtasksLength})`}</SectionName>
           <SubtaskRender subtasks={subtasks} />
         </Wrapper>
       </Main>
 
       <Footer>
         <SectionName>Current Status</SectionName>
-        <Dropdown options={StatusOptions} defaultValue={defaultStatus} onSelect={setSelectedStatus} />
+        <Dropdown
+          on={statusDropdownOpen}
+          selectedOption={selectedStatus ?? currentStatusInOption}
+          onChange={onChangeStatus}
+          onOpen={onClickInDropdown}
+          options={StatusOptions}
+        />
       </Footer>
     </Container>
   )

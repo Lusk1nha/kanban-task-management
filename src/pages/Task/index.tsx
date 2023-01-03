@@ -20,7 +20,7 @@ export function Task({ title, description, status, subtasks }: TaskProps) {
   }
 
   return (
-    <Container title={title} aria-label={title} onClick={handleClick} draggable>
+    <Container title={title} aria-label={title} onClick={handleClick}>
       <Title>{title}</Title>
       <SubtasksInfo title={`0 of ${subtasks?.length} subtasks`}>
         {`0 of ${subtasks?.length} subtasks`}

@@ -1,13 +1,10 @@
 import { Container } from "./style";
 import { IOptionProps } from './IOptionProps';
-import { IOption } from "../../../../shared/models/IOption";
 
-export function Option({ text, value, setSelected }: IOptionProps) {
-  const handleClick = (option: IOption) => setSelected(option);
-
+export function Option({ text, value, onChange }: IOptionProps) {
   return (
-    <Container onClick={() => handleClick({text, value})}>
+    <Container onClick={() => onChange({ text, value })}>
       {text}
-    </Container>
+    </Container >
   )
 }

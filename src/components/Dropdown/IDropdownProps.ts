@@ -1,8 +1,10 @@
 import { IOption } from '../../shared/models/IOption';
 
 export interface IDropdownProps {
-  defaultValue?: IOption;
+  selectedOption: IOption | null;
   options: IOption[];
-  onSelect: React.Dispatch<React.SetStateAction<string>>;
   placeholder?: string;
+  onChange: (args: any) => void
+  onOpen?: (args: any) => void
+  on?: boolean;
 }

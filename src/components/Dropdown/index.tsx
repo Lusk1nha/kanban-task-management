@@ -5,29 +5,27 @@ import { IDropdownProps } from "./IDropdownProps";
 import { ChevronDown } from './../Icons/components/ChevronDown/index';
 import { IOption } from "../../shared/models/IOption";
 
-export function Dropdown({ defaultValue, options, placeholder, onSelect }: IDropdownProps) {
-  const [selected, setSelected] = useState<IOption>(defaultValue ?? options.filter(option => option.isDefaultValue)[0])
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+export function Dropdown({ on, onChange, onOpen, selectedOption, options, placeholder }: IDropdownProps) {
+  const [selected, setSelected] = useState<IOption | null>(selectedOption)
 
   useEffect(() => {
-    if(selected != null) {
-      onSelect(selected.value)
+    if (selected?.value != selectedOption?.value) {
+      console.log('here')
+      setSelected(selectedOption)
     }
-  }, [selected, options])
-
-  const handleOpen = () => setIsOpen(!isOpen)
+  }, [selectedOption])
 
   return (
     <Container>
       <Wrapper>
-        <Output onClick={handleOpen}>
+        <Output onClick={onOpen}>
           <CurrentValue>{selected?.text ?? placeholder}</CurrentValue>
           <ChevronDown iconColor="transparent" />
         </Output>
 
         {
-          isOpen
-            ? <OptionsRender options={options} setSelected={setSelected} />
+          on
+            ? <OptionsRender options={options} onChange={onChange} />
             : null
         }
       </Wrapper>

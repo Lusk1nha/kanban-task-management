@@ -15,6 +15,7 @@ export const Container = styled.li`
   list-style: none;
 
   cursor: pointer;
+  user-select: none;
 
   transition: 150ms transform linear;
 
