@@ -1,6 +1,10 @@
 import { HTMLProps } from "react";
+import { RegisterOptions, UseFormRegister } from "react-hook-form";
 
 export interface ITextFieldProps extends HTMLProps<HTMLInputElement>  {
-  label: string;
-  type: 'singleline' | 'multiline'
+  name: string;
+  label?: string;
+  disableLabel?: boolean;
+  register: UseFormRegister<any>;
+  rules?: RegisterOptions;
 }

@@ -1,11 +1,11 @@
-import { Container, Wrapper, Output, CurrentValue } from "./style";
+import { Container, Label, Wrapper, Output, CurrentValue } from "./style";
 import { useState, useEffect } from 'react';
 import { OptionsRender } from './components/OptionsRender/index';
 import { IDropdownProps } from "./IDropdownProps";
 import { ChevronDown } from './../Icons/components/ChevronDown/index';
 import { IOption } from "../../shared/models/IOption";
 
-export function Dropdown({ on, onChange, onOpen, selectedOption, options, placeholder }: IDropdownProps) {
+export function Dropdown({ label, disableLabel, on, onChange, onOpen, selectedOption, options, placeholder }: IDropdownProps) {
   const [selected, setSelected] = useState<IOption | null>(selectedOption)
 
   useEffect(() => {
@@ -17,6 +17,7 @@ export function Dropdown({ on, onChange, onOpen, selectedOption, options, placeh
 
   return (
     <Container>
+      {!disableLabel ? <Label>{label}</Label> : null}
       <Wrapper>
         <Output onClick={onOpen}>
           <CurrentValue>{selected?.text ?? placeholder}</CurrentValue>

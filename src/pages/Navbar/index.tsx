@@ -7,7 +7,7 @@ import { CurrentBoardContext } from '../../contexts/components/CurrentBoardConte
 import { IButton } from '../../shared/models/IButton';
 import { ModalContext } from '../../contexts/components/ModalProvider';
 
-import { TaskCreate } from '../Task/components/TaskCreate';
+import { TaskCreate } from '../TaskCreate';
 
 const buttonsOptions = [
   { text: 'Edit Board', title: 'Edit Board', "aria-label": 'Edit Board', type: 'button' },

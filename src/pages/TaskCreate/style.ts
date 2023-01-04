@@ -35,7 +35,7 @@ export const Title = styled.h2`
   font-weight: 700;
   line-height: 1.438rem;
 
-  padding-right: 2rem;
+  text-align: center;
 `
 
 export const Form = styled.form`
@@ -47,4 +47,34 @@ export const Form = styled.form`
   flex-grow: 1;
 
   row-gap: 1.5rem;
+`
+
+export const CreateTaskButton = styled.button`
+  background: #635FC7;
+  width: 100%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: 0.813rem;
+  font-weight: 700;
+  line-height: 1.438rem;
+
+  outline: none;
+  border: none;
+
+  padding: 0.5rem 1rem;
+
+  border-radius: 1.25rem;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition: background 150ms linear;
+
+  &:hover {
+    background: #A8A4FF;
+  }
 `

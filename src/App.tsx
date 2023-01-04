@@ -7,7 +7,7 @@ import { IBoard } from './shared/models/IBoard';
 import { CurrentBoardContextProvider } from './contexts/components/CurrentBoardContextProvider';
 import { Modal } from './components/Modal';
 import { Sidebar } from './pages/Sidebar';
-import { TaskView } from './pages/Task/components/TaskView';
+import { TaskView } from './pages/TaskView';
 
 const Container = styled.div`
   background: ${props => props.theme.colors.bgColor};

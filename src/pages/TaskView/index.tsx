@@ -1,13 +1,13 @@
-import { Options } from '../../../../components/Buttons/components';
-import { Dropdown } from '../../../../components/Dropdown';
-import { IButton } from '../../../../shared/models/IButton';
-import { IOption } from '../../../../shared/models/IOption';
-import { ISubtask } from '../../../../shared/models/ISubtask';
-import { SubtaskRender } from '../../../SubtaskRender';
+import { Options } from '../../components/Buttons/components';
+import { Dropdown } from '../../components/Dropdown';
+import { IButton } from '../../shared/models/IButton';
+import { IOption } from '../../shared/models/IOption';
+import { ISubtask } from '../../shared/models/ISubtask';
+import { SubtaskRender } from '../SubtaskRender';
 import { Container, Header, Title, Main, Description, SectionName, Wrapper, Footer } from './style';
 import { FormEvent, useEffect, useState, useContext } from 'react';
-import { CurrentBoardContext } from './../../../../contexts/components/CurrentBoardContextProvider/index';
-import { IColumn } from './../../../../shared/models/IColumn';
+import { CurrentBoardContext } from '../../contexts/components/CurrentBoardContextProvider/index';
+import { IColumn } from '../../shared/models/IColumn';
 
 const StatusOptions = [
   {
@@ -68,11 +68,7 @@ export function TaskView({ title, description, status, subtasks }: TaskProps) {
     setStatusDropdownOpen(!statusDropdownOpen)
   }
 
-  const handleClickInContent = (event: any) => {
-    event.stopPropagation()
-  }
-  
-  const getAllColumns = (columns: IColumn[]): IOption[] => {
+    const getAllColumns = (columns: IColumn[]): IOption[] => {
     return columns.map((column, id) => {
       return {
         id: id,
@@ -81,6 +77,12 @@ export function TaskView({ title, description, status, subtasks }: TaskProps) {
       } as IOption
     })
   }
+
+  const handleClickInContent = (event: any) => {
+    event.stopPropagation()
+  }
+  
+
 
   console.log(status, currentStatusInOption)
 

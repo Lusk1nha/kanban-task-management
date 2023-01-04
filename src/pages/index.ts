@@ -10,3 +10,5 @@ export * from './TaskRender';
 export * from './NoColumn';
 export * from './SubtaskRender';
 export * from './Subtask';
+export * from './TaskView';
+export * from './TaskCreate';
