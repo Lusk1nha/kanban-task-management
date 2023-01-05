@@ -9,34 +9,22 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from "yup";
 
 export const TaskCreateSchema = Yup.object().shape({
-  Title: Yup
-    .string()
-    .nullable()
-    .required('Can’t be empty'),
-
-  Description: Yup
-    .string()
-    .nullable(),
-
-  Subtasks: Yup.array()
-    .of(
-      Yup.object().shape({
-        Title: Yup.string()
-          .required('Can’t be empty')
-          .nullable()
-      })
-    ),
-
-  Status: Yup.string()
-    .required()
-    .nullable()
+  Title: Yup.string().nullable().required('Can’t be empty'),
+  Description: Yup.string().nullable(),
+  Subtasks: Yup.array().of(
+    Yup.object().shape({
+      Title: Yup.string().required('Can’t be empty').nullable()
+    })
+  ),
+  Status: Yup.string().required().nullable()
 })
 
 export function Logic({ children, defaultValues, onSubmit }: IFormLogic<ITaskCreateModel>) {
-  const { formState, register, handleSubmit, control, reset, watch } = useForm<ITaskCreateModel>({
+  const { formState, register, handleSubmit, control, reset, watch, setValue } = useForm<ITaskCreateModel>({
     mode: "onChange",
     defaultValues,
-    resolver: yupResolver(TaskCreateSchema)
+    resolver: yupResolver(TaskCreateSchema),
+    criteriaMode: "all"
   })
 
   const { errors, isSubmitting } = formState
@@ -58,7 +46,7 @@ export function Logic({ children, defaultValues, onSubmit }: IFormLogic<ITaskCre
   }
 
   return (
-    <FormProvider value={{ onSubmit: handleSubmitLogic, fields, append, remove, handleSubmit, register, watch, errors }}>
+    <FormProvider value={{ onSubmit: handleSubmitLogic, fields, append, remove, handleSubmit, register, watch, setValue, errors }}>
       {children}
     </FormProvider>
   )

@@ -4,14 +4,17 @@ import { OptionsRender } from './components/OptionsRender/index';
 import { IDropdownProps } from "./IDropdownProps";
 import { ChevronDown } from './../Icons/components/ChevronDown/index';
 import { IOption } from "../../shared/models/IOption";
+import { useContext } from 'react';
+import { FormContext } from './../../contexts/components/FormProvider/index';
 
-export function Dropdown({ label, disableLabel, on, onChange, onOpen, selectedOption, options, placeholder }: IDropdownProps) {
+export function Dropdown({ name, label, disableLabel, on, onChange, onOpen, selectedOption, options, placeholder }: IDropdownProps) {
+  const { setValue } = useContext(FormContext)
   const [selected, setSelected] = useState<IOption | null>(selectedOption)
 
   useEffect(() => {
     if (selected?.value != selectedOption?.value) {
-      console.log('here')
       setSelected(selectedOption)
+      setValue(name, selectedOption?.value)
     }
   }, [selectedOption])
 

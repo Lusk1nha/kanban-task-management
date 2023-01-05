@@ -3,7 +3,6 @@ import { Container, Header, Title } from "./style"
 
 
 export function TaskCreate() {
-
   const handleClickInContent = (event: any) => {
     event.stopPropagation()
   }

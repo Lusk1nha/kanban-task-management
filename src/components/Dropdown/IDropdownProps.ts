@@ -1,6 +1,7 @@
 import { IOption } from '../../shared/models/IOption';
 
 export interface IDropdownProps {
+  name: string;
   label?: string;
   disableLabel?: boolean;
   selectedOption: IOption | null;

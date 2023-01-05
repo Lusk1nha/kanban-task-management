@@ -59,10 +59,10 @@ export const Render = styled.ul`
 `
 
 export const CreateItemButton = styled.button`
-  background: #FFFFFF;
+  background: ${props => props.theme.colors.addNewSubtaskButtonBGColor};
   width: 100%;
 
-  color: #635FC7;
+  color: ${props => props.theme.colors.addNewSubtaskButtonTextColor};
   font-size: 0.813rem;
   font-weight: 700;
   line-height: 1.438rem;

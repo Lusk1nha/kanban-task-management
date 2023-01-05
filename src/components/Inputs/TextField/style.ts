@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type ContainerProps = {
-  hasError: boolean;
+  hasError?: boolean;
 }
 
 export const Label = styled.label`
@@ -78,21 +78,7 @@ export const Input = styled.textarea`
   }
 `
 
-export const ErrorMessage = styled.p`
-  max-width: 6.875rem;
-  width: 60%;
 
-  display: none;
-
-  color: #EA5555;
-  font-size: 0.813rem;
-  font-weight: 500;
-  line-height: 1.438rem;
-
-  text-align: left;
-
-  padding: 0.5rem 0;
-`
 
 export const Container = styled.fieldset<ContainerProps>`
   width: 100%;
@@ -128,10 +114,6 @@ export const Container = styled.fieldset<ContainerProps>`
           background: #EA5555;
         }
       }
-    }
-
-    ${ErrorMessage} {
-      display: block;
     }
   `)}
 `

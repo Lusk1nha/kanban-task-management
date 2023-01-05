@@ -17,7 +17,7 @@ export function ItemsRender({ label, newItemSchema }: IItemsRenderProps) {
         <Render>
           {fields.map((item, id) => {
             return (
-              <Item item={item} index={id} key={id} />
+              <Item item={item} index={id} key={item.id} />
             )
           })}
         </Render>

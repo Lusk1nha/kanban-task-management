@@ -56,7 +56,9 @@ export const light = {
   "dropdownOptionsBGColor": "#FFFFFF",
   "createButtonPanelBGColor": "linear-gradient(180deg, #E9EFFA 0%, rgba(233, 239, 250, 0.5) 100%)",
   "createButtonPanelTextColor": "#828FA3",
-  "createButtonPanelTextColorHover": "#635FC7"
+  "createButtonPanelTextColorHover": "#635FC7",
+  "addNewSubtaskButtonBGColor": "#635FC71A",
+  "addNewSubtaskButtonTextColor": "#635FC7"
 }
 
 export const dark = {
@@ -109,5 +111,7 @@ export const dark = {
   "dropdownOptionsBGColor": "#20212C",
   "createButtonPanelBGColor": "linear-gradient(180deg, rgba(43, 44, 55, 0.25) 0%, rgba(43, 44, 55, 0.125) 100%)",
   "createButtonPanelTextColor": "#828FA3",
-  "createButtonPanelTextColorHover": "#635FC7"
+  "createButtonPanelTextColorHover": "#635FC7",
+  "addNewSubtaskButtonBGColor": "#FFFFFF",
+  "addNewSubtaskButtonTextColor": "#635FC7"
 }

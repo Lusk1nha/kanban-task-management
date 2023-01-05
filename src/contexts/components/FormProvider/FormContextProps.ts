@@ -1,4 +1,5 @@
 import { FieldArrayWithId, FieldValues, UseFormHandleSubmit, UseFormRegister, UseFormWatch, FieldErrorsImpl, UseFieldArrayAppend, ArrayPath, UseFieldArrayRemove } from "react-hook-form";
+import { UseFormSetValue } from "react-hook-form/dist/types/form";
 
 export interface FormContextProps<T extends FieldValues> {
   onSubmit: (data: T) => void; 
@@ -8,5 +9,6 @@ export interface FormContextProps<T extends FieldValues> {
   remove: UseFieldArrayRemove;
   register: UseFormRegister<T>;
   watch: UseFormWatch<T>;
+  setValue: UseFormSetValue<T>;
   errors: FieldErrorsImpl<T>
 }

@@ -57,6 +57,7 @@ export function View() {
       />
 
       <Dropdown
+        name="Status"
         label="Status"
         on={statusDropdownOpen}
         selectedOption={selectedStatus ?? currentStatusInOption}
