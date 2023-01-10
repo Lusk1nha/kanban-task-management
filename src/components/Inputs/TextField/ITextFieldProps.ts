@@ -7,4 +7,5 @@ export interface ITextFieldProps extends HTMLProps<HTMLInputElement>  {
   disableLabel?: boolean;
   register: UseFormRegister<any>;
   rules?: RegisterOptions;
+  disabled?: boolean;
 }

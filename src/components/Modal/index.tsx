@@ -5,6 +5,7 @@ import { ModalContext } from './../../contexts/components/ModalProvider/index';
 
 export function Modal({ children, on }: IModalProps) {
   const modalContext = useContext(ModalContext);
+
   const handleClickOutside = () => {
     modalContext?.setOpened(false)
     modalContext?.setContent(null)

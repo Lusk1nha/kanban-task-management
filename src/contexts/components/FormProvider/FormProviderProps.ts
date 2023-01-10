@@ -1,7 +1,7 @@
 import { FormContextProps } from './FormContextProps';
-import { ITaskCreateModel } from './../../../shared/repositories/ITaskCreateModel';
+import { FieldValues } from 'react-hook-form';
 
-export interface FormProviderProps {
+export interface FormProviderProps<T extends FieldValues> {
   children: React.ReactNode;
-  value: FormContextProps<ITaskCreateModel>;
+  value: FormContextProps<T>;
 }

@@ -5,8 +5,8 @@ import { FormContext } from './../../../../../contexts/components/FormProvider/i
 import { TextField } from "../../../TextField";
 import { CrossIcon } from "../../../../Icons/components/CrossIcon";
 
-export function Item({ item, index }: IItemProps) {
-  const { register, remove } = useContext(FormContext)
+export function Item({ name, remove, index }: IItemProps) {
+  const { register } = useContext(FormContext)
 
   const handleRemoveItem = async () => {
     remove(index)
@@ -14,8 +14,9 @@ export function Item({ item, index }: IItemProps) {
 
   return (
     <Container>
-      <TextField name={`Subtasks.${index}.Title`} rows={1} placeholder="e.g. Make coffee" register={register} disableLabel />
-      <RemoveItemButton type="button" onClick={handleRemoveItem}>
+      <TextField name={`${name}.${index}.Title`} rows={1} placeholder="e.g. Make coffee" register={register} disableLabel />
+      
+      <RemoveItemButton type="button" title="Click to remove item" aria-label="Click to remove item button" onClick={handleRemoveItem}>
         <CrossIcon />
       </RemoveItemButton>
     </Container>

@@ -50,6 +50,7 @@ export const Input = styled.textarea`
 
   transition: border 150ms linear;
 
+  margin: 0.2rem;
   padding: 0.5rem 1rem;
 
 
@@ -59,7 +60,7 @@ export const Input = styled.textarea`
   }
 
   &::-webkit-scrollbar {
-    width: 0.313rem;
+    width: 0.25rem;
   }
 
   &::-webkit-scrollbar-track {

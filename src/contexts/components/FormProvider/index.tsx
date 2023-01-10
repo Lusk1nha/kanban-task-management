@@ -1,11 +1,12 @@
 import { createContext } from 'react';
 import { FormContextProps } from './FormContextProps';
-import { ITaskCreateModel } from './../../../shared/repositories/ITaskCreateModel';
 import { FormProviderProps } from './FormProviderProps';
+import { FieldValues } from 'react-hook-form';
 
-export const FormContext = createContext({} as FormContextProps<ITaskCreateModel>)
+export const FormContext = createContext({} as FormContextProps<any>)
 
-export function FormProvider({ children, value }: FormProviderProps) {
+export function FormProvider<T extends FieldValues>
+  ({ children, value }: FormProviderProps<T>) {
   return (
     <FormContext.Provider value={value}>
       {children}

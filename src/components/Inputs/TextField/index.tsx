@@ -5,7 +5,7 @@ import { FormContext } from './../../../contexts/components/FormProvider/index';
 import { ErrorMessage } from "@hookform/error-message";
 import { ErrorMessageText } from "../../ErrorMessageText";
 
-export function TextField({ name, label, disableLabel, rows, placeholder, register, rules }: ITextFieldProps) {
+export function TextField({ name, label, disableLabel, rows, placeholder, register, rules, disabled }: ITextFieldProps) {
   const [hasError, setHasError] = useState<boolean>(false)
   const { errors, watch } = useContext(FormContext)
 

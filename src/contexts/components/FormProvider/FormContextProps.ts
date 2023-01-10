@@ -1,14 +1,17 @@
-import { FieldArrayWithId, FieldValues, UseFormHandleSubmit, UseFormRegister, UseFormWatch, FieldErrorsImpl, UseFieldArrayAppend, ArrayPath, UseFieldArrayRemove } from "react-hook-form";
+import { Control, FieldArrayWithId, FieldValues, UseFormHandleSubmit, UseFormRegister, UseFormWatch, FieldErrorsImpl, UseFieldArrayAppend, ArrayPath, UseFieldArrayRemove } from "react-hook-form";
 import { UseFormSetValue } from "react-hook-form/dist/types/form";
 
-export interface FormContextProps<T extends FieldValues> {
-  onSubmit: (data: T) => void; 
-  handleSubmit: UseFormHandleSubmit<T>;
-  fields: FieldArrayWithId<T, any, "id">[];
-  append: UseFieldArrayAppend<T, any>;
-  remove: UseFieldArrayRemove;
-  register: UseFormRegister<T>;
-  watch: UseFormWatch<T>;
-  setValue: UseFormSetValue<T>;
-  errors: FieldErrorsImpl<T>
+import { IButton, IContent } from "../../../components/Form/model/props";
+
+export interface FormContextProps<TFieldValues extends FieldValues = FieldValues> {
+  title: string;
+  content: IContent;
+  submitButton?: IButton;
+  onSubmit: (data: TFieldValues) => void;
+  handleSubmit: UseFormHandleSubmit<TFieldValues>;
+  control: Control<TFieldValues>;
+  register: UseFormRegister<TFieldValues>;
+  watch: UseFormWatch<TFieldValues>;
+  setValue: UseFormSetValue<TFieldValues>;
+  errors: FieldErrorsImpl<TFieldValues>
 }

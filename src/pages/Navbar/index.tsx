@@ -7,12 +7,9 @@ import { CurrentBoardContext } from '../../contexts/components/CurrentBoardConte
 import { IButton } from '../../shared/models/IButton';
 import { ModalContext } from '../../contexts/components/ModalProvider';
 
-import { TaskCreate } from '../TaskCreate';
+import { TaskCreate } from '../../pages/Forms/TaskCreate';
+import { BoardEdit } from '../../pages/Forms/BoardEdit';
 
-const buttonsOptions = [
-  { text: 'Edit Board', title: 'Edit Board', "aria-label": 'Edit Board', type: 'button' },
-  { text: 'Delete Board', variant: 'delete', title: 'Delete Board', "aria-label": 'Delete Board', type: 'button' },
-] as IButton[]
 
 export function Navbar() {
   const currentBoard = useContext(CurrentBoardContext)
@@ -20,10 +17,23 @@ export function Navbar() {
 
   const { on } = useContext(SidebarContext)
 
-  const handleAddClick = () => {
+  const handleAddTaskClick = () => {
     modalContext?.setOpened(true);
     modalContext?.setContent(<TaskCreate />);
   }
+
+  const handleEditBoardClick = () => {
+    if(currentBoard.board?.name) {
+      modalContext?.setOpened(true);
+      modalContext?.setContent(<BoardEdit name={currentBoard.board?.name} columns={currentBoard.board?.columns} />);
+    }
+  }
+
+  const buttonsOptions = [
+    { text: 'Edit Board', onClick: handleEditBoardClick, title: 'Edit Board', "aria-label": 'Edit Board', type: 'button' },
+    { text: 'Delete Board', variant: 'delete', title: 'Delete Board', "aria-label": 'Delete Board', type: 'button' },
+  ] as IButton[]
+
 
   return (
     <Container>
@@ -49,7 +59,7 @@ export function Navbar() {
         </TaskContainer>
 
         <Buttons>
-          <CreateTask type="button" disabled={currentBoard.board?.columns?.length === 0} onClick={handleAddClick}>+</CreateTask>
+          <CreateTask type="button" disabled={currentBoard.board?.columns?.length === 0} onClick={handleAddTaskClick}>+</CreateTask>
 
           <Options
             align="left"

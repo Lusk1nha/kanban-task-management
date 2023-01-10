@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ModalContext } from "../../contexts/components/ModalProvider";
 import { Container, Title, SubtasksInfo } from "./style";
-import { TaskView } from "../TaskView";
+import { TaskView } from "../../pages/Forms/TaskView";
 import { ISubtask } from './../../shared/models/ISubtask';
 
 interface TaskProps {

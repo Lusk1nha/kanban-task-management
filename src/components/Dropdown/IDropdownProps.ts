@@ -1,13 +1,9 @@
-import { IOption } from '../../shared/models/IOption';
-
 export interface IDropdownProps {
-  name: string;
+  name: any;
   label?: string;
   disableLabel?: boolean;
-  selectedOption: IOption | null;
-  options: IOption[];
+  options: string[];
   placeholder?: string;
-  onChange: (args: any) => void
   onOpen?: (args: any) => void
   on?: boolean;
 }

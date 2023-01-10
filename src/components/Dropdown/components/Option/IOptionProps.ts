@@ -1,7 +1,4 @@
-import { IOption } from "../../../../shared/models/IOption";
-
 export interface IOptionProps {
+  name: any;
   text: string;
-  value: string;
-  onChange: (args: any) => void;
 }
