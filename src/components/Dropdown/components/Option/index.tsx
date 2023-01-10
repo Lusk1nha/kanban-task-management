@@ -1,13 +1,13 @@
 import { Container } from "./style";
 import { IOptionProps } from './IOptionProps';
-import { FormContext } from "../../../../contexts/components/FormProvider";
-import { useContext } from "react";
+
+import { useFormContext } from "react-hook-form";
 
 export function Option({ name, text }: IOptionProps) {
-  const { setValue } = useContext(FormContext)
+  const { setValue } = useFormContext()
 
   return (
-    <Container onClick={() => setValue(name, text)}>
+    <Container title={text} aria-label={text} onClick={() => setValue(name, text)}>
       {text}
     </Container >
   )

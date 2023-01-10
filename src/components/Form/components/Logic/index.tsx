@@ -1,55 +1,68 @@
-import { useForm, FieldValues, DefaultValues, ValidationMode } from 'react-hook-form';
+import { useForm, FieldValues, DefaultValues, ValidationMode, FormProvider } from 'react-hook-form';
 
 import * as Yup from "yup";
 
 import { MFieldArrayPath } from '../../model/forms';
-import { FormProvider } from '../../../../contexts/components/FormProvider';
 
-import { IButton, IContent } from '../../model/props';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect, useContext } from 'react';
+import { View } from '../View';
+import { FormContentContext } from './../../../../contexts/components/FormContentProvider/index';
 
-interface Props<T> {
-  title: string;
-  content: IContent;
-  mode: keyof ValidationMode | undefined;
-  children: React.ReactNode;
-  validationSchema: Yup.ObjectSchema<any>;
-  defaultValues?: DefaultValues<T>;
-  onSubmit: (data: T) => Promise<Response | void>;
-  submitButton?: IButton;
+interface Props {
+  children?: React.ReactNode;
+  onSubmit: (data: FieldValues) => Promise<Response | void>;
 }
 
-interface IFieldValue {
-  Title: string;
-}
 
-export function Logic<TFieldValues extends FieldValues = FieldValues, TFieldArrayName extends MFieldArrayPath<TFieldValues, IFieldValue> = MFieldArrayPath<TFieldValues, IFieldValue>>({ title, content, submitButton, mode, children, validationSchema, defaultValues, onSubmit }: Props<TFieldValues>) {
+export function Logic({ onSubmit }: Props) {
+  const {
+    mode,
+    defaultValues,
+    validationSchema } = useContext(FormContentContext)
 
-  let fieldArrayProps = undefined
-
-  const { formState, register, handleSubmit, control, reset, watch, setValue } = useForm<TFieldValues>({
+  const methods = useForm<FieldValues>({
     mode,
     defaultValues,
     criteriaMode: "all",
     resolver: yupResolver(validationSchema)
   });
 
-  const { errors, isSubmitting } = formState
+  const { formState, formState: { isValidating }, handleSubmit, reset, watch } = methods
 
-  async function handleSubmitLogic(data: TFieldValues): Promise<void> {
+  const data = watch()
+
+  async function handleSubmitLogic(data: FieldValues): Promise<void> {
     console.log(data)
 
     await onSubmit(data)
-      .then(() => reset(data))
       .catch((err: Error) => {
         throw new Error(err.message)
       })
   }
 
+  // useEffect(() => {
+  //   if ((mode === "all" || mode === "onChange")
+  //     && formState.isValid
+  //     && formState.isSubmitting
+  //     && !isValidating) {
+  //       console.log(formState)
+  //     handleSubmit(async (data) => console.log(data))()
+  //   }
+
+  // }, [formState, data, isValidating])
+
+
+  // useEffect(() => {
+  //   if (formState.isSubmitSuccessful) {
+  //     reset()
+  //   }
+
+  // }, [formState.isSubmitSuccessful])
 
   return (
-    <FormProvider value={{ title, content, submitButton, onSubmit: handleSubmitLogic, control, handleSubmit, register, watch, setValue, errors }}>
-      {children}
+    <FormProvider {...methods}>
+      <View onSubmit={handleSubmitLogic} />
     </FormProvider>
   )
 }

@@ -58,7 +58,11 @@ export const light = {
   "createButtonPanelTextColor": "#828FA3",
   "createButtonPanelTextColorHover": "#635FC7",
   "addNewSubtaskButtonBGColor": "#635FC71A",
-  "addNewSubtaskButtonTextColor": "#635FC7"
+  "addNewSubtaskButtonBGColorHover": "#635fc740",
+  "addNewSubtaskButtonTextColor": "#635FC7",
+  "dialogTitleTextColor": "#EA5555",
+  "dialogDeleteButtonBGColor": "#EA5555",
+  "dialogDeleteButtonBGColorHover": "#FF9898",
 }
 
 export const dark = {
@@ -113,5 +117,9 @@ export const dark = {
   "createButtonPanelTextColor": "#828FA3",
   "createButtonPanelTextColorHover": "#635FC7",
   "addNewSubtaskButtonBGColor": "#FFFFFF",
-  "addNewSubtaskButtonTextColor": "#635FC7"
+  "addNewSubtaskButtonBGColorHover": "#FFFFFF",
+  "addNewSubtaskButtonTextColor": "#635FC7",
+  "dialogTitleTextColor": "#EA5555",
+  "dialogDeleteButtonBGColor": "#EA5555",
+  "dialogDeleteButtonBGColorHover": "#FF9898",
 }

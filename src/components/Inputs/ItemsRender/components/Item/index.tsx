@@ -1,12 +1,11 @@
 import { Container, RemoveItemButton } from "./style";
 import { IItemProps } from './IItemProps';
-import { useContext } from 'react';
-import { FormContext } from './../../../../../contexts/components/FormProvider/index';
 import { TextField } from "../../../TextField";
 import { CrossIcon } from "../../../../Icons/components/CrossIcon";
+import { useFormContext } from "react-hook-form";
 
 export function Item({ name, remove, index }: IItemProps) {
-  const { register } = useContext(FormContext)
+  const { register } = useFormContext()
 
   const handleRemoveItem = async () => {
     remove(index)

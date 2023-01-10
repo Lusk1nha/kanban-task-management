@@ -13,7 +13,11 @@ export const Container = styled.nav`
   display: flex;
   align-items: center;
 
-  z-index: 10;
+  z-index: 2000;
+  
+  @media screen and (min-width: 700px) {
+    z-index: 10;
+  }
 `
 
 export const LogoContainer = styled.div<LogoContainerProps>`
@@ -105,6 +109,12 @@ export const TaskContainer = styled.section`
   margin-right: auto;
 
   cursor: pointer;
+
+  pointer-events: all;
+
+  @media screen and (min-width: 700px) {
+    pointer-events: none;
+  }
 `;
 
 export const TaskTitle = styled.h3`

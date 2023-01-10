@@ -1,19 +1,24 @@
 import { Form, Footer, SubmitButton } from "../../style";
 
-import { useContext } from 'react';
-import { FormContext } from './../../../../contexts/components/FormProvider/index';
-import { CurrentBoardContext } from "../../../../contexts/components/CurrentBoardContextProvider";
-
 import { Header } from "./components/Header";
 import { Main } from "./components/Main";
+import { FieldValues, useFormContext } from "react-hook-form";
+import { FormContentContext } from './../../../../contexts/components/FormContentProvider/index';
+import { useContext } from "react";
 
-export function View() {
+interface IViewProps {
+  onSubmit: (data: FieldValues) => void;
+}
+
+export function View({ onSubmit }: IViewProps) {
+  const {
+    handleSubmit
+  } = useFormContext()
+
   const {
     content,
-    submitButton,
-    onSubmit,
-    handleSubmit
-  } = useContext(FormContext)
+    submitButton
+  } = useContext(FormContentContext)
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>

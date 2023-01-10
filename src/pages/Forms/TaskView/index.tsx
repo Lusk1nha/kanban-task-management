@@ -11,6 +11,7 @@ import { SubtaskRender } from "../../SubtaskRender";
 import { IButton } from "../../../shared/models/IButton";
 import { TaskEdit } from "../TaskEdit";
 import { ModalContext } from "../../../contexts/components/ModalProvider";
+import { TaskDelete } from "../../Dialogs/TaskDelete";
 
 type Task = {
   title: string;
@@ -70,12 +71,14 @@ export function TaskView({ title, description, subtasks, status }: ITaskViewProp
     modalContext?.setContent(<TaskEdit title={title} description={description} subtasks={subtasks} status={status} />);
   }
 
+  const deleteTaskOnClick = () => {
+    modalContext?.setContent(<TaskDelete name={title} />);
+  }
+
   const ButtonsOptions = [
     { text: 'Edit Task', onClick: editTaskOnClick, title: 'Edit Task', "aria-label": 'Edit Task', type: 'button' },
-    { text: 'Delete Task', variant: 'delete', title: 'Delete Task', "aria-label": 'Delete Task', type: 'button' },
+    { text: 'Delete Task', onClick: deleteTaskOnClick, variant: 'delete', title: 'Delete Task', "aria-label": 'Delete Task', type: 'button' },
   ] as IButton[]
-
-  console.log(subtasks)
 
   return (
     <Container onClick={handleClickInContent}>

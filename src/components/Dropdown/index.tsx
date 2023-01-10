@@ -4,14 +4,13 @@ import { OptionsRender } from './components/OptionsRender/index';
 import { IDropdownProps } from "./IDropdownProps";
 import { ChevronDown } from './../Icons/components/ChevronDown/index';
 
-import { useContext } from 'react';
-import { FormContext } from './../../contexts/components/FormProvider/index';
+import { useFormContext } from "react-hook-form";
 
 export function Dropdown({ name, label, disableLabel, on, onOpen, options, placeholder }: IDropdownProps) {
-  const { watch } = useContext(FormContext)
+  const { watch } = useFormContext()
 
   const currentValue = watch(name)
-  
+
   const [selected, setSelected] = useState<string>(currentValue)
 
   useEffect(() => {
@@ -24,7 +23,7 @@ export function Dropdown({ name, label, disableLabel, on, onOpen, options, place
     <Container>
       {!disableLabel ? <Label>{label}</Label> : null}
       <Wrapper>
-        <Output onClick={onOpen}>
+        <Output title={`${label}: ${selected}`} aria-label={`${label}: ${selected}`} onClick={onOpen}>
           <CurrentValue>{selected ?? placeholder}</CurrentValue>
           <ChevronDown iconColor="transparent" />
         </Output>

@@ -30,7 +30,7 @@ export const Wrapper = styled.div`
   }
 `
 
-export const Input = styled.textarea`
+export const InputArea = styled.textarea`
   background: transparent;
 
   width: 100%;
@@ -53,12 +53,11 @@ export const Input = styled.textarea`
   margin: 0.2rem;
   padding: 0.5rem 1rem;
 
-
   &::placeholder {
     opacity: 50%;
     mix-blend-mode: normal;
   }
-
+  
   &::-webkit-scrollbar {
     width: 0.25rem;
   }
@@ -76,6 +75,37 @@ export const Input = styled.textarea`
     &:hover {
       background: #635FC7;
     }
+  }
+`
+
+export const InputText = styled.input.attrs(() => ({
+  type: "text"
+}))`
+  background: transparent;
+
+  width: 100%;
+  height: 100%;
+
+  color: ${props => props.theme.colors.subtaskViewCardTextColor};
+  font-size: 0.813rem;
+  font-weight: 500;
+  line-height: 1.438rem;
+
+  outline: none;
+  border: none;
+
+  border-radius: 0.25rem;
+
+  resize: none;
+
+  transition: border 150ms linear;
+
+  margin: 0.2rem;
+  padding: 0.5rem 1rem;
+
+  &::placeholder {
+    opacity: 50%;
+    mix-blend-mode: normal;
   }
 `
 

@@ -8,25 +8,31 @@ import { IBoard } from "../../shared/models/IBoard";
 import { GlobalStyle } from "../../styles";
 import { IAppProvidersProps } from "./IAppProvidersProps";
 
+import { QueryClient } from "react-query";
+import { QueryClientProvider } from "react-query";
+
 const currentBoardLocalStorage = localStorage.getItem('currentBoard')
 const currentBoardCached = currentBoardLocalStorage != null ? JSON.parse(currentBoardLocalStorage) : null
 
+const queryClient = new QueryClient()
 
 export default function AppProviders({ children }: IAppProvidersProps) {
   const [currentBoard, setCurrentBoard] = useState<IBoard | null>(currentBoardCached);
 
   return (
-    <ThemeContextProvider>
-      <BoardsContextProvider>
-        <SidebarContextProvider>
-          <CurrentBoardContextProvider board={currentBoard} setBoard={setCurrentBoard}>
-            <GlobalStyle />
-            <ModalProvider>
-              {children}
-            </ModalProvider>
-          </CurrentBoardContextProvider>
-        </SidebarContextProvider>
-      </BoardsContextProvider>
-    </ThemeContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeContextProvider>
+        <BoardsContextProvider>
+          <SidebarContextProvider>
+            <CurrentBoardContextProvider board={currentBoard} setBoard={setCurrentBoard}>
+              <GlobalStyle />
+              <ModalProvider>
+                {children}
+              </ModalProvider>
+            </CurrentBoardContextProvider>
+          </SidebarContextProvider>
+        </BoardsContextProvider>
+      </ThemeContextProvider>
+    </QueryClientProvider>
   );
 }

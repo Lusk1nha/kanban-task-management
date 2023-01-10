@@ -7,9 +7,10 @@ import { CurrentBoardContext } from '../../contexts/components/CurrentBoardConte
 import { IButton } from '../../shared/models/IButton';
 import { ModalContext } from '../../contexts/components/ModalProvider';
 
-import { TaskCreate } from '../../pages/Forms/TaskCreate';
-import { BoardEdit } from '../../pages/Forms/BoardEdit';
+import { TaskCreate, BoardEdit, Sidebar } from '../../pages/';
+import { BoardDelete } from '../Dialogs/BoardDelete';
 
+import { MobileSidebar } from './../MobileSidebar/index';
 
 export function Navbar() {
   const currentBoard = useContext(CurrentBoardContext)
@@ -17,21 +18,33 @@ export function Navbar() {
 
   const { on } = useContext(SidebarContext)
 
+  const handleOpenSidebarClick = () => {
+    modalContext?.setOpened(true);
+    modalContext?.setContent(<MobileSidebar />);
+  }
+
   const handleAddTaskClick = () => {
     modalContext?.setOpened(true);
     modalContext?.setContent(<TaskCreate />);
   }
 
   const handleEditBoardClick = () => {
-    if(currentBoard.board?.name) {
+    if (currentBoard.board?.name) {
       modalContext?.setOpened(true);
       modalContext?.setContent(<BoardEdit name={currentBoard.board?.name} columns={currentBoard.board?.columns} />);
     }
   }
 
+  const handleDeleteBoardClick = () => {
+    if (currentBoard.board?.name) {
+      modalContext?.setOpened(true);
+      modalContext?.setContent(<BoardDelete />);
+    }
+  }
+
   const buttonsOptions = [
     { text: 'Edit Board', onClick: handleEditBoardClick, title: 'Edit Board', "aria-label": 'Edit Board', type: 'button' },
-    { text: 'Delete Board', variant: 'delete', title: 'Delete Board', "aria-label": 'Delete Board', type: 'button' },
+    { text: 'Delete Board', onClick: handleDeleteBoardClick, variant: 'delete', title: 'Delete Board', "aria-label": 'Delete Board', type: 'button' },
   ] as IButton[]
 
 

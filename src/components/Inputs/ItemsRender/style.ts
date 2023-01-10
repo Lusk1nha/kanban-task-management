@@ -77,4 +77,10 @@ export const CreateItemButton = styled.button`
 
   cursor: pointer;
   user-select: none;
+
+  transition: background 150ms linear;
+
+  &:hover {
+    background: ${props => props.theme.colors.addNewSubtaskButtonBGColorHover};
+  }
 `

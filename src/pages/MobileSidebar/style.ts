@@ -8,22 +8,27 @@ type DropdownProps = {
 
 export const Container = styled.aside`
   background: ${props => props.theme.colors.navColor};
-  min-width: 16.25rem;
+
+  max-width: 16.5rem;
+
+  max-height: 20.125rem;
   height: 100%;
 
-  display: none;
-  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+
   border-right: 1px solid ${props => props.theme.colors.sidebarBorderColor};
-
+  
   padding: 1rem 0 1rem 0;
-
+  
   z-index: 10;
+  
+  border-radius: 0.5rem;
 
   @media screen and (min-width: 700px) {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    flex-grow: 1;
+    display: none;
   }
 `
 
@@ -53,8 +58,6 @@ export const ThemeContainer = styled.div`
   column-gap: 1.5rem;
 
   border-radius: 0.375rem;
-
-  margin-bottom: 1rem;
 `
 
 export const Dropdown = styled.button<DropdownProps>`
@@ -114,7 +117,7 @@ export const HideSideBarButton = styled.button`
   font-size: 0.938rem;
   font-weight: 700;
 
-  display: flex;
+  display: none;
   align-items: center;
 
   column-gap: 0.625rem;

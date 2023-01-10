@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 
 export function ErrorMessageText({ message, setHasError}: IErrorMessageTextProps) {
   useEffect(() => {
-    console.log(message)
     if(message != null) {
       return setHasError(true)
     }

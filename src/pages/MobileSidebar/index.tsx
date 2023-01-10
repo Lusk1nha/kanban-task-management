@@ -9,7 +9,7 @@ import { BoardCreate } from "../Forms/BoardCreate";
 import { ModalContext } from "../../contexts/components/ModalProvider";
 import { HideSidebarIcon } from './../../components/Icons/components/HideSidebarIcon/index';
 
-export function Sidebar() {
+export function MobileSidebar() {
   const { onChange } = useContext(SidebarContext)
   const { theme, onThemeChange } = useContext(ThemeContext)
   const { boards } = useContext(BoardsContext)

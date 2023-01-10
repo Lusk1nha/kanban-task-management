@@ -1,35 +1,29 @@
 import { Container, Label, Wrapper } from "./style";
 import { Item } from './components/Item';
 
-import { useContext } from "react";
-import { FormContext } from "../../../contexts/components/FormProvider";
-import { useMFieldArray, MFieldArrayPath } from "../../Form/model/forms";
-import { FieldValues } from "react-hook-form";
+import { useFieldArray, useFormContext } from "react-hook-form";
 
-interface IChecklistValue {
+type ChecklistValue = {
   title: string;
   isCompleted: boolean;
 }
 
-interface IChecklistProps<TFieldValues extends FieldValues, TFieldArrayName> {
-  name: TFieldArrayName;
+interface IChecklistProps {
+  name: string;
 }
 
-export function Checklist<
-  TFieldValues extends FieldValues = FieldValues,
-  TFieldArrayName extends MFieldArrayPath<TFieldValues, IChecklistValue> = MFieldArrayPath<TFieldValues, IChecklistValue>
->({ name }: IChecklistProps<TFieldValues, TFieldArrayName>) {
+export function Checklist({ name }: IChecklistProps) {
   const {
     control
-  } = useContext(FormContext)
+  } = useFormContext()
 
-  const { fields, update } = useMFieldArray<IChecklistValue, TFieldValues, TFieldArrayName>({
+  const { fields, update } = useFieldArray({
     name,
     control
   });
 
   const itemsLength = fields?.length
-  const completedItems = fields.filter(items => items.isCompleted)
+  const completedItems = fields?.filter((item: any) => item.isCompleted)
 
   return (
     <Container>
